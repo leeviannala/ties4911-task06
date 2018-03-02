@@ -5,13 +5,15 @@ from slackclient import SlackClient
 
 
 # instantiate Slack client
-slack_client = SlackClient("")
+file = open("API-key.txt", "r")
+key = file.readlines()[0]
+slack_client = SlackClient(key)
 # starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
 
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
-EXAMPLE_COMMAND = "do"
+EXAMPLE_COMMAND = "search"
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
 
 def parse_bot_commands(slack_events):
