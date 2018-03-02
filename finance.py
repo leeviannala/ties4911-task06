@@ -14,4 +14,4 @@ def getStockQuote(exchange, stock):
             'Day high: ' + json_data['hi'] + '\n' +
             'Day low: ' + json_data['lo'])
 
-print(getStockQuote('HEL', 'NOKIA'))
+# print(getStockQuote('HEL', 'NOKIA'))

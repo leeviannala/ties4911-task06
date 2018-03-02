@@ -2,6 +2,7 @@ import os
 import time
 import re
 from slackclient import SlackClient
+import finance
 
 
 # instantiate Slack client
@@ -38,6 +39,18 @@ def parse_direct_mention(message_text):
     # the first group contains the username, the second group contains the remaining message
     return (matches.group(1), matches.group(2).strip()) if matches else (None, None)
 
+def parse_search(command):
+    """
+    Parses a market and a stock from command
+    :param command:
+    :return:
+    """
+    market_and_stock = command.split(" ")[1].split(":")
+    if len(market_and_stock) != 2:
+        raise ValueError("The command should be in format Market:Stock")
+    return market_and_stock[0], market_and_stock[1]
+
+
 def handle_command(command, channel):
     """
         Executes bot command if the command is known
@@ -49,14 +62,19 @@ def handle_command(command, channel):
     response = None
     # This is where you start to implement more commands!
     if command.startswith(EXAMPLE_COMMAND):
-        response = "It's not ready yet!"
+        try:
+            market, stock = parse_search(command)
+            response = finance.getStockQuote(market, stock)
+        except (IndexError, ValueError, TypeError) as e:
+            response = str(e)
+
     if command.startswith('help'):
         response = "This is a bot for stock price and news search. You " + \
-            "can search for stock price from Helsinki market and you " + \
+            "can search for stock price from specified market and you " + \
             "will get a price, a list of some news about it and sentiment " + \
             "analysis on the news. If you want to know Nokia price and news " + \
             " on Nokia, you can use this bot by: " + \
-            "@ibm_discovery_bot search Nokia"
+            "@ibm_discovery_bot search HEL:Nokia"
 
     # Sends the response back to the channel
     slack_client.api_call(
