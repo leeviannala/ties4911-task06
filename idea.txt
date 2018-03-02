@@ -1,0 +1,1 @@
+Twitter personality analysis with Personality Insights. It is already done, by IBM, but idea would be to do own implementation without direct copying.
