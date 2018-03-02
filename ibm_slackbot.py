@@ -43,13 +43,20 @@ def handle_command(command, channel):
         Executes bot command if the command is known
     """
     # Default response is help text for the user
-    default_response = "Not sure what you mean. Try *{}*.".format(EXAMPLE_COMMAND)
+    default_response = "Not sure what you mean. Try *help* or *search*."
 
     # Finds and executes the given command, filling in response
     response = None
     # This is where you start to implement more commands!
     if command.startswith(EXAMPLE_COMMAND):
-        response = "Sure...write some more code then I can do that!"
+        response = "It's not ready yet!"
+    if command.startswith('help'):
+        response = "This is a bot for stock price and news search. You " + \
+            "can search for stock price from Helsinki market and you " + \
+            "will get a price, a list of some news about it and sentiment " + \
+            "analysis on the news. If you want to know Nokia price and news " + \
+            " on Nokia, you can use this bot by: " + \
+            "@ibm_discovery_bot search Nokia"
 
     # Sends the response back to the channel
     slack_client.api_call(
