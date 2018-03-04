@@ -17,6 +17,7 @@ Returns a count of all hits.
 ### aggregation_summary
 
 Returns and list of json objects in following format:
+```json
 {
     'key' : string,
     'positives' : number,
@@ -24,8 +25,10 @@ Returns and list of json objects in following format:
     'negatives' : number,
     'result_count' : number
 }
+```
 
 Key is an reference to all keywords found in news articles. For example IBM aggregation_summary is:
+```json
 [
     {'key': 'IBM', 'neutral': 231, 'negatives': 953, 'positives': 3013, 'result_count': 4197}, 
     {'key': 'Microsoft', 'neutral': 28, 'negatives': 284, 'positives': 640, 'result_count': 952}, 
@@ -38,11 +41,11 @@ Key is an reference to all keywords found in news articles. For example IBM aggr
     {'key': 'CEO', 'neutral': 7, 'negatives': 56, 'positives': 150, 'result_count': 213}, 
     {'key': 'AI', 'neutral': 0, 'negatives': 15, 'positives': 174, 'result_count': 189}
 ]
-
+```
 ### results_summary
 
 Returns a list of all news references to the company. Example for IBM:
-
+```json
 [
     {
         'url': 'https://www.freelancer.de/projects/graphic-design/design-logo-16321812/', 
@@ -101,3 +104,4 @@ Returns a list of all news references to the company. Example for IBM:
         'host': 'freelancer.de'
     }
 ]
+```
