@@ -103,7 +103,7 @@ class QueryResult():
                 "enriched_text" : entities
             })
             
-            return collection
+        return collection
 
 #"https://gateway.watsonplatform.net/discovery/api/v1/environments/system/collections/news-en/query?version=2017-11-07&aggregation=filter%28enriched_title.entities.type%3A%3ACompany%29.term%28enriched_title.entities.text%29.timeslice%28crawl_date%2C1day%29.term%28enriched_text.sentiment.document.label%29&filter=IBM&highlight=true&passages.count=5&query="
 def example(company_name):
