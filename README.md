@@ -69,37 +69,38 @@ Returns a list of all news references to the company. Example for IBM:
                 {
                     "sentiment": {"score": 0.684175, "label": "positive"}, 
                     "count": 2, 
-                    "relevance": 0.637626, "text": "Dasha"}, 
-                    {
-                        "sentiment": {"score": 0, "label": "neutral"}, 
-                        "count": 1, 
-                        "relevance": 0.483074, 
-                        "text": "Durchschnitt"
-                    }, 
-                    {
-                        "sentiment": {"score": 0, "label": "neutral"}, 
-                        "count": 1, 
-                        "relevance": 0.483074, 
-                        "text": "$15"
-                    }, 
-                    {
-                        "sentiment": {"score": 0, "label": "neutral"}, 
-                        "count": 1, 
-                        "relevance": 0.483074, 
-                        "text": "$19"
-                    }, 
-                    {
-                        "sentiment": {"score": 0, "label": "neutral"}, 
-                        "count": 1, 
-                        "relevance": 0.483074, 
-                        "text": "$20"
-                    }, 
-                    {
-                        "sentiment": {"score": 0, "label": "neutral"}, 
-                        "count": 1, 
-                        "relevance": 0.483074, 
-                        "text": "$25"
-                    }
+                    "relevance": 0.637626, "text": "Dasha"
+                }, 
+                {
+                    "sentiment": {"score": 0, "label": "neutral"}, 
+                    "count": 1, 
+                    "relevance": 0.483074, 
+                    "text": "Durchschnitt"
+                }, 
+                {
+                    "sentiment": {"score": 0, "label": "neutral"}, 
+                    "count": 1, 
+                    "relevance": 0.483074, 
+                    "text": "$15"
+                }, 
+                {
+                    "sentiment": {"score": 0, "label": "neutral"}, 
+                    "count": 1, 
+                    "relevance": 0.483074, 
+                    "text": "$19"
+                }, 
+                {
+                    "sentiment": {"score": 0, "label": "neutral"}, 
+                    "count": 1, 
+                    "relevance": 0.483074, 
+                    "text": "$20"
+                }, 
+                {
+                    "sentiment": {"score": 0, "label": "neutral"}, 
+                    "count": 1, 
+                    "relevance": 0.483074, 
+                    "text": "$25"
+                }
             ],
         "host": "freelancer.de"
     }
