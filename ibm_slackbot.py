@@ -78,17 +78,11 @@ def handle_command(command, channel):
     if command.startswith(EXAMPLE_COMMAND):
         try:
             market, stock = parse_search(command)
-<<<<<<< HEAD
             response = finance.getStockQuote(market, stock) + "\n\n" + dn.getCompanyFame(stock)
         except:
             response = "Something went wrong. Maybe you mistyped " + \
                 "something. Letter size matters also. Maybe there just " + \
                 "was nothing on the company to be found."
-=======
-            response = finance.get_stock_quote(market, stock) + "\n\n" + dn.get_company_fame(stock)
-        except (IndexError, ValueError, TypeError) as e:
-            response = str(e)
->>>>>>> 7d99a22ad30752f4abf87295c1a774b10b24c52c
 
     if command.startswith('help'):
         response = "This is a bot for stock price and news search. You " + \
