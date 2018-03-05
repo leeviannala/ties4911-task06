@@ -5,10 +5,21 @@ University of jyväskylä course Ties4911 task 6
 
 ### Setup
 
-1. Login to IBM bluemix (https://console.bluemix.net/dashboard/apps/) and find your service credentials.
-2. Open ibm_settings.py file. 
-3. Remove raise exceptions and uncomment the return lines. 
-4. Place your credentials.
+1. Make a slackbot and get API-key for that (https://olegkorol.de/2017/04/23/Creating-a-smart-ChatBot-for-Slack/)
+    - Put the API-key to API-key.txt on the first line
+        - *Never push this file to github*
+2. Login to IBM bluemix (https://console.bluemix.net/dashboard/apps/) and find your service credentials.
+    - Place them in API-key.txt file along with slack API-key
+        - Place them in following order, each to their own line:
+            - Slackbot API-key
+            - Username to IBM bluemix
+            - Password to IBM bluemix
+            - Enviroment id (it's not needed in this project, so just put something on the line)
+            - collection id (it's not needed in this project, so just put something on the line)
+            - configuration id (it's not needed in this project, so just put something on the line)
+        - It is important to have at least 6 lines on the file
+        - *Never push this file to github*
+
 
 ### matching_results
 
