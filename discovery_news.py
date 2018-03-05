@@ -150,7 +150,7 @@ def example(company_name):
     # return(str(q.matching_results()) + "\n\n" + str(q.aggregation_summary()) + "\n\n" + str(q.results_summary()) + "\n\n")
 
 
-def getCompanyFame(company_name):
+def get_company_fame(company_name):
     bin_file_name = "discovery_{0}.bin".format(company_name)
     directory_name = "queries"
     dir_file_path = os.path.join(os.getcwd(), directory_name)
@@ -177,7 +177,7 @@ def getCompanyFame(company_name):
     return(result['key'] + " got " + str(result['result_count']) + " hits with " + str(result['positives']) + " positive and " + str(result['neutral']) + " neutral and " + str(result['negatives']) + " negative."  + "\n\n")
 
 
-#getCompanyFame("IBM")
+get_company_fame("IBM")
 #example("Apple")
 #example("Nokia")
 ##example("Google")
