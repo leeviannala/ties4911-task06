@@ -23,7 +23,7 @@ class DiscoveryNews():
         opener.open(url)
         # Install the opener.
         # Now all calls to urllib.request.urlopen use our opener.
-        urllib.request.install_opener(opener)       
+        urllib.request.install_opener(opener)
 
         resource = urllib.request.urlopen(url)
         with open(bin_file_path, 'wb') as f:
@@ -33,15 +33,15 @@ class DiscoveryNews():
 
 class QueryResult():
     _jsonObj = None
-    
+
     def __init__(self, bin_file_path):
         with open(bin_file_path, 'r', encoding='utf-8') as f:
             raw_content = ''.join(f.readlines())
             self._jsonObj = json.loads(raw_content)
-    
+
     def matching_results(self):
         return self._jsonObj['matching_results']
-    
+
     def aggregations(self):
         return self._jsonObj['aggregations']
 
@@ -65,7 +65,7 @@ class QueryResult():
                         neutral += aggr_inn_res
                     elif aggr_inn_key == 'negative':
                         negatives += aggr_inn_res
-            
+
             obj_result = {
                 "key" : obj['key'],
                 "result_count" : obj['matching_results'],
@@ -74,7 +74,7 @@ class QueryResult():
                 "negatives" : negatives
             }
             collection.append(obj_result)
-        return collection  
+        return collection
 
     def passages(self):
         return self._jsonObj['passages']
@@ -102,7 +102,7 @@ class QueryResult():
                 "title_sentiment" : result['enriched_title']['sentiment']['document'],
                 "enriched_text" : entities
             })
-            
+
         return collection
 
 #"https://gateway.watsonplatform.net/discovery/api/v1/environments/system/collections/news-en/query?version=2017-11-07&aggregation=filter%28enriched_title.entities.type%3A%3ACompany%29.term%28enriched_title.entities.text%29.timeslice%28crawl_date%2C1day%29.term%28enriched_text.sentiment.document.label%29&filter=IBM&highlight=true&passages.count=5&query="
@@ -130,7 +130,35 @@ def example(company_name):
     print("")
     return(str(q.matching_results()) + "\n\n" + str(q.aggregation_summary()) + "\n\n" + str(q.results_summary()) + "\n\n")
 
-#example("IBM")
+
+def getCompanyFame(company_name):
+    bin_file_name = "discovery_{0}.bin".format(company_name)
+    directory_name = "queries"
+    dir_file_path = os.path.join(os.getcwd(), directory_name)
+    bin_file_path = os.path.join(os.getcwd(), directory_name, bin_file_name)
+
+    if not os.path.exists(dir_file_path):
+        os.makedirs(dir_file_path)
+
+    query_file = Path(bin_file_path)
+    if not query_file.is_file():
+        acc = WatsonAccountSettings()
+        dn = DiscoveryNews(acc.username(), acc.password())
+        dn.query(company_name, bin_file_path)
+
+    q = QueryResult(bin_file_path)
+    summary = q.aggregation_summary()
+    keys = q.aggregation_keys()
+    result = ''
+    for idx, key in enumerate(keys):
+        if key == company_name:
+            result = summary[idx]
+
+    print(result['key'] + " got " + str(result['result_count']) + " hits with " + str(result['positives']) + " positive and " + str(result['neutral']) + " neutral and " + str(result['negatives']) + " negative." )
+    return(result['key'] + " got " + str(result['result_count']) + " hits with " + str(result['positives']) + " positive and " + str(result['neutral']) + " neutral and " + str(result['negatives']) + " negative."  + "\n\n")
+
+
+#getCompanyFame("IBM")
 #example("Apple")
 #example("Nokia")
 ##example("Google")
