@@ -3,11 +3,12 @@ import time
 import re
 from slackclient import SlackClient
 import finance
+import discovery_news as dn
 
 
 # instantiate Slack client
 file = open("API-key.txt", "r")
-key = file.readlines()[0]
+key = file.readlines()[0].strip()
 slack_client = SlackClient(key)
 # starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
@@ -64,7 +65,7 @@ def handle_command(command, channel):
     if command.startswith(EXAMPLE_COMMAND):
         try:
             market, stock = parse_search(command)
-            response = finance.getStockQuote(market, stock)
+            response = finance.getStockQuote(market, stock) + "\n\n" +  dn.example(stock)
         except (IndexError, ValueError, TypeError) as e:
             response = str(e)
 
