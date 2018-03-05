@@ -2,7 +2,7 @@ import json
 import requests
 
 
-def getStockQuote(exchange, stock):
+def get_stock_quote(exchange, stock):
     exchange = exchange.strip().upper() + '+'
     stock = stock.strip().replace(' ', '+').upper()
     rsp = requests.get('https://finance.google.com/finance?q=' + exchange +
@@ -17,4 +17,4 @@ def getStockQuote(exchange, stock):
             'Day high: ' + json_data['hi'] + '\n' +
             'Day low: ' + json_data['lo'])
 
-# print(getStockQuote('HEL', 'NOKIA'))
+# print(get_stock_quote('HEL', 'NOKIA'))
