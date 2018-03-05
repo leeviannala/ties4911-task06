@@ -173,11 +173,11 @@ def get_company_fame(company_name):
         if key == company_name:
             result = summary[idx]
 
-    print(result['key'] + " got " + str(result['result_count']) + " hits with " + str(result['positives']) + " positive and " + str(result['neutral']) + " neutral and " + str(result['negatives']) + " negative." )
+    #print(result['key'] + " got " + str(result['result_count']) + " hits with " + str(result['positives']) + " positive and " + str(result['neutral']) + " neutral and " + str(result['negatives']) + " negative." )
     return(result['key'] + " got " + str(result['result_count']) + " hits with " + str(result['positives']) + " positive and " + str(result['neutral']) + " neutral and " + str(result['negatives']) + " negative."  + "\n\n")
 
 
-get_company_fame("IBM")
+#get_company_fame("IBM")
 #example("Apple")
 #example("Nokia")
 ##example("Google")
