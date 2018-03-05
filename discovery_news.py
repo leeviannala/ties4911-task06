@@ -143,19 +143,11 @@ def example(company_name):
     print("")
     print(q.results_summary())
     print("")
-<<<<<<< HEAD
     # return (str(q.matching_results()) + "\n\n" + str(
     #     q.aggregation_summary()) + "\n\n" + str(q.results_summary()) + \
     #          "\n\n")
     return (str(q.aggregation_summary()))
-# example("IBM")
-# example("Apple")
-# example("Nokia")
-# example("Google")
-# example("UPM")
-# example("Tesla")
-=======
-    return(str(q.matching_results()) + "\n\n" + str(q.aggregation_summary()) + "\n\n" + str(q.results_summary()) + "\n\n")
+    # return(str(q.matching_results()) + "\n\n" + str(q.aggregation_summary()) + "\n\n" + str(q.results_summary()) + "\n\n")
 
 
 def getCompanyFame(company_name):
@@ -191,4 +183,3 @@ def getCompanyFame(company_name):
 ##example("Google")
 ##example("UPM")
 #example("Tesla")
->>>>>>> 1c7149058dcfe2014375a56a4929b918553de0d2

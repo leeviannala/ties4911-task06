@@ -71,12 +71,7 @@ def handle_command(command, channel):
     if command.startswith(EXAMPLE_COMMAND):
         try:
             market, stock = parse_search(command)
-<<<<<<< HEAD
-            response = finance.getStockQuote(market, stock) + "\n\n" +  \
-                       dn.example(stock)
-=======
             response = finance.getStockQuote(market, stock) + "\n\n" + dn.getCompanyFame(stock)
->>>>>>> 1c7149058dcfe2014375a56a4929b918553de0d2
         except (IndexError, ValueError, TypeError) as e:
             response = str(e)
 
