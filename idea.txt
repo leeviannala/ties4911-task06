@@ -1,1 +1,9 @@
-Twitter personality analysis with Personality Insights. It is already done, by IBM, but idea would be to do own implementation without direct copying.
+- Twitter personality analysis with Personality Insights. It is already done, by IBM, but idea would be to do own implementation without direct copying.
+
+- Automated blog post illustrator. Use e.g. Google's Natural Language Processor for processing blog text and try to find key concepts from text and search Creative Commons licensed images with Google Image search. Validate correct content of the image with one of the image classifier services.
+
+- Automated news notification with Slack Bot and IBM Discovery news.
+
+- Automated financial news evaluation and stock sell or buy suggestions with IBM Chat-Bot and Discovery News, Tone Analyzer.
+
+- Automated public opinion evaluator (from forums, comments, etc.) with IBM Tone Analyzer and Azure Language.
