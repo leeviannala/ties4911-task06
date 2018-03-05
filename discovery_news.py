@@ -1,5 +1,5 @@
 # coding: utf-8
-import urllib.request
+import urllib.parse, urllib.request
 from ibm_settings import WatsonAccountSettings
 import json
 from pathlib import Path
@@ -21,7 +21,7 @@ class DiscoveryNews():
         self.handler = urllib.request.HTTPBasicAuthHandler(password_mgr)
 
     def query_url(self, company_name):
-        return self._url.format(company_name)
+        return self._url.format(urllib.parse.quote_plus(company_name))
 
     def query(self, company_name, bin_file_path):
         url = self.query_url(company_name)
@@ -183,3 +183,4 @@ def get_company_fame(company_name):
 ##example("Google")
 ##example("UPM")
 #example("Tesla")
+#example("Wärtsilä oy")
