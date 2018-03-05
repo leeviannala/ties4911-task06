@@ -7,7 +7,13 @@ import os
 
 class DiscoveryNews():
     _root_url = "https://gateway.watsonplatform.net/discovery/"
-    _url = "https://gateway.watsonplatform.net/discovery/api/v1/environments/system/collections/news-en/query?version=2017-11-07&aggregation=filter%28enriched_title.entities.type%3A%3ACompany%29.term%28enriched_title.entities.text%29.timeslice%28crawl_date%2C1day%29.term%28enriched_text.sentiment.document.label%29&filter={0}&highlight=true&passages.count=5&query="
+    _url = "https://gateway.watsonplatform.net/discovery/api/v1/" + \
+           "environments/system/collections/news-en/query?version=" + \
+           "2017-11-07&aggregation=filter%28enriched_title.entities." + \
+           "type%3A%3ACompany%29.term%28enriched_title.entities.text%29." + \
+           "timeslice%28crawl_date%2C1day%29.term%28enriched_text." + \
+           "sentiment.document.label%29&filter={0}&highlight=" + \
+           "true&passages.count=5&query="
 
     def __init__(self, username, password):
         password_mgr = urllib.request.HTTPPasswordMgrWithDefaultRealm()
@@ -46,17 +52,20 @@ class QueryResult():
         return self._jsonObj['aggregations']
 
     def aggregation_keys(self):
-        return [obj['key'] for obj in self._jsonObj['aggregations'][0]['aggregations'][0]['results']]
+        return [obj['key'] for obj in
+                self._jsonObj['aggregations'][0]['aggregations'][0]['results']]
 
     def aggregation_summary(self):
         collection = []
-        for obj in self._jsonObj['aggregations'][0]['aggregations'][0]['results']:
+        for obj in \
+                self._jsonObj['aggregations'][0]['aggregations'][0]['results']:
             positives = 0
             neutral = 0
             negatives = 0
 
             for aggr_results in obj['aggregations'][0]['results']:
-                for aggr_inner_results in aggr_results['aggregations'][0]['results']:
+                for aggr_inner_results in \
+                        aggr_results['aggregations'][0]['results']:
                     aggr_inn_key = aggr_inner_results['key']
                     aggr_inn_res = aggr_inner_results['matching_results']
                     if aggr_inn_key == 'positive':
@@ -99,13 +108,19 @@ class QueryResult():
                 "host" : result['host'],
                 "title" : result['title'],
                 "date" : result['publication_date'],
-                "title_sentiment" : result['enriched_title']['sentiment']['document'],
+                "title_sentiment":
+                    result['enriched_title']['sentiment']['document'],
                 "enriched_text" : entities
             })
             
         return collection
 
-#"https://gateway.watsonplatform.net/discovery/api/v1/environments/system/collections/news-en/query?version=2017-11-07&aggregation=filter%28enriched_title.entities.type%3A%3ACompany%29.term%28enriched_title.entities.text%29.timeslice%28crawl_date%2C1day%29.term%28enriched_text.sentiment.document.label%29&filter=IBM&highlight=true&passages.count=5&query="
+# "https://gateway.watsonplatform.net/discovery/api/v1/environments/system/
+# collections/news-en/query?version=2017-11-07&
+# aggregation=filter%28enriched_title.entities.type%3A%3ACompany%29.term%
+# 28enriched_title.entities.text%29.timeslice%28crawl_date%2C1day%29.term%
+# 28enriched_text.sentiment.document.label%29&filter=
+# IBM&highlight=true&passages.count=5&query="
 def example(company_name):
     bin_file_name = "discovery_{0}.bin".format(company_name)
     directory_name = "queries"
@@ -128,11 +143,13 @@ def example(company_name):
     print("")
     print(q.results_summary())
     print("")
-    return(str(q.matching_results()) + "\n\n" + str(q.aggregation_summary()) + "\n\n" + str(q.results_summary()) + "\n\n")
-
-#example("IBM")
-#example("Apple")
-#example("Nokia")
-##example("Google")
-##example("UPM")
-#example("Tesla")
+    # return (str(q.matching_results()) + "\n\n" + str(
+    #     q.aggregation_summary()) + "\n\n" + str(q.results_summary()) + \
+    #          "\n\n")
+    return (str(q.aggregation_summary()))
+# example("IBM")
+# example("Apple")
+# example("Nokia")
+# example("Google")
+# example("UPM")
+# example("Tesla")

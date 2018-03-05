@@ -20,8 +20,10 @@ MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
 
 def parse_bot_commands(slack_events):
     """
-        Parses a list of events coming from the Slack RTM API to find bot commands.
-        If a bot command is found, this function returns a tuple of command and channel.
+        Parses a list of events coming from the Slack RTM API to find bot
+        commands.
+        If a bot command is found, this function returns a tuple of command
+        and channel.
         If its not found, then this function returns None, None.
     """
     for event in slack_events:
@@ -33,12 +35,16 @@ def parse_bot_commands(slack_events):
 
 def parse_direct_mention(message_text):
     """
-        Finds a direct mention (a mention that is at the beginning) in message text
-        and returns the user ID which was mentioned. If there is no direct mention, returns None
+        Finds a direct mention (a mention that is at the beginning) in message
+        text
+        and returns the user ID which was mentioned. If there is no direct
+        mention, returns None
     """
     matches = re.search(MENTION_REGEX, message_text)
-    # the first group contains the username, the second group contains the remaining message
-    return (matches.group(1), matches.group(2).strip()) if matches else (None, None)
+    # the first group contains the username, the second group contains the
+    # remaining message
+    return (matches.group(1), matches.group(2).strip()) if matches \
+        else (None, None)
 
 def parse_search(command):
     """
@@ -65,7 +71,8 @@ def handle_command(command, channel):
     if command.startswith(EXAMPLE_COMMAND):
         try:
             market, stock = parse_search(command)
-            response = finance.getStockQuote(market, stock) + "\n\n" +  dn.example(stock)
+            response = finance.getStockQuote(market, stock) + "\n\n" +  \
+                       dn.example(stock)
         except (IndexError, ValueError, TypeError) as e:
             response = str(e)
 
@@ -73,8 +80,8 @@ def handle_command(command, channel):
         response = "This is a bot for stock price and news search. You " + \
             "can search for stock price from specified market and you " + \
             "will get a price, a list of some news about it and sentiment " + \
-            "analysis on the news. If you want to know Nokia price and news " + \
-            " on Nokia, you can use this bot by: " + \
+            "analysis on the news. If you want to know Nokia price and  " + \
+            " news on Nokia, you can use this bot by: " + \
             "@ibm_discovery_bot search HEL:Nokia"
 
     # Sends the response back to the channel
