@@ -12,8 +12,9 @@ University of jyväskylä course Ties4911 task 6
     - Place them in API-key.txt file along with slack API-key
         - Place them in following order, each to their own line:
             - Slackbot API-key
-            - Username to IBM bluemix
-            - Password to IBM bluemix
+            - Username to the service
+            - Password to the service
+                - Note that the last two are not the username and password you use to login, but username and passwords to the service, which you can't choose yourself.
             - Enviroment id (it's not needed in this project, so just put something on the line)
             - collection id (it's not needed in this project, so just put something on the line)
             - configuration id (it's not needed in this project, so just put something on the line)
