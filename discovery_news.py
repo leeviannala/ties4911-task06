@@ -170,7 +170,7 @@ def get_company_fame(company_name):
     keys = q.aggregation_keys()
     result = ''
     for idx, key in enumerate(keys):
-        if key == company_name:
+        if key in company_name:
             result = summary[idx]
 
     #print(result['key'] + " got " + str(result['result_count']) + " hits with " + str(result['positives']) + " positive and " + str(result['neutral']) + " neutral and " + str(result['negatives']) + " negative." )
