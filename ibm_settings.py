@@ -6,11 +6,11 @@ class WatsonAccountSettings:
     def __init__(self):
         __file = open("API-key.txt", "r")
         __lines = __file.readlines()
-        self.__username = __lines[1]
-        self.__password = __lines[2]
-        self.__env_id = __lines[3]
-        self.__coll_id = __lines[4]
-        self.__conf_id = __lines[5]
+        self.__username = __lines[1].split()
+        self.__password = __lines[2].split()
+        self.__env_id = __lines[3].split()
+        self.__coll_id = __lines[4].split()
+        self.__conf_id = __lines[5].split()
 
     def username(self):
         #raise ValueError('You need to add your own username to ibm_settings.py file')
