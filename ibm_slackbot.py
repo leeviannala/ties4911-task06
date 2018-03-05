@@ -53,9 +53,16 @@ def parse_search(command):
     :return:
     """
     market_and_stock = command.split(" ")[1].split(":")
-    if len(market_and_stock) != 2:
-        raise ValueError("The command should be in format Market:Stock")
-    return market_and_stock[0], market_and_stock[1]
+    if len(market_and_stock) == 1:
+        market = 'HEL'
+        stock = market_and_stock[0]
+    elif len(market_and_stock) == 2:
+        market = market_and_stock[0]
+        stock = market_and_stock[1]
+    else:
+        raise ValueError("The command should be of form search HEL:Nokia or" +
+                         " search Nokia ")
+    return market, stock
 
 
 def handle_command(command, channel):
